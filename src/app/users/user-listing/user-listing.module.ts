@@ -9,6 +9,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class UserListingModule { }

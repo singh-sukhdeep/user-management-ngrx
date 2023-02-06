@@ -3,7 +3,13 @@
   <button class="user-listing__add-user" (click)="openCreateUserDialog()" mat-raised-button color="primary">Add
     User</button>
 </div>
-
+<div class="user-filter-field">
+    <mat-form-field appearance="outline">
+      <mat-label>Search User with Email</mat-label>
+      <input matInput [formControl]="emailSearchControl" placeholder="Start typing email to search">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+</div>
 <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->
   <ng-container matColumnDef="position">
@@ -36,6 +42,6 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+  <tr [routerLink]="['/user', row?.email]" mat-row [class.demo-row-is-clicked]="clickedRows.has(row)"
     *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

@@ -27,7 +27,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
     StoreModule.forRoot({ users: userReducer },
       { metaReducers: metaReducers }),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({})
+    StoreDevtoolsModule.instrument({}),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

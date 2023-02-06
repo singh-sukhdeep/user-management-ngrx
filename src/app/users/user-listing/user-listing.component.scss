@@ -16,15 +16,19 @@
   font-weight: bold;
 }
 
-
-.user-listing{
+.user-listing {
   display: flex;
   margin-bottom: 2rem;
   align-items: center;
   justify-content: space-between;
 
-  .user-listing__header{
+  .user-listing__header {
     margin: 0;
   }
+}
 
+.user-filter-field {
+  mat-form-field {
+    width: 50%;
+  }
 }

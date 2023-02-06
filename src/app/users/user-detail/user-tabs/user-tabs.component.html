@@ -1,0 +1,19 @@
+<mat-tab-group>
+  <mat-tab label="User_Detail">
+    <app-user-detail>
+      <h2 tabTitle>User Info</h2>
+      <mat-list role="list" tabContent>
+        <mat-list-item role="listitem"> First Name : {{userDetail?.firstName}}</mat-list-item>
+        <mat-list-item role="listitem">Last Name : {{userDetail?.lastName}}</mat-list-item>
+        <mat-list-item role="listitem">Email : {{userDetail?.email}}</mat-list-item>
+        <mat-list-item role="listitem">Phone : {{userDetail?.phone}}</mat-list-item>
+      </mat-list>
+    </app-user-detail>
+  </mat-tab>
+  <mat-tab label="History"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+    electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+    Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+    PageMaker including versions of Lorem Ipsum.</mat-tab>
+</mat-tab-group>
