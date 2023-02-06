@@ -1,0 +1,46 @@
+<form  (ngSubmit)="submitUserForm(userForm)" [formGroup]="userForm" #form>
+  <h2 mat-dialog-title>Create User</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="user-form">
+      <mat-form-field class="user-form__form-field" appearance="outline">
+        <mat-label>First name</mat-label>
+        <input type="text" matInput [formControl]="firstName" placeholder="Ex. John" maxlength="50">
+        <mat-error *ngIf="firstName.hasError('required')">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="user-form__form-field" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput [formControl]="lastName" placeholder="Ex. Doe" maxlength="50">
+        <mat-error *ngIf="lastName.hasError('required')">
+          Last Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="user-form__form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="email" placeholder="Ex. pat@example.com" maxlength="150">
+        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="user-form__form-field" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input type="number" matInput [formControl]="phone"  placeholder="Ex. 9xx8xx9xx">
+        <mat-error *ngIf="phone.hasError('required')">
+          Phone Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button cdkFocusInitial mat-raised-button color="primary">Submit</button>
+  </mat-dialog-actions>
+</form>

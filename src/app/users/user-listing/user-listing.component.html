@@ -1,0 +1,41 @@
+<div class="user-listing">
+  <h2 class="user-listing__header"> User Listing </h2>
+  <button class="user-listing__add-user" (click)="openCreateUserDialog()" mat-raised-button color="primary">Add
+    User</button>
+</div>
+
+<table mat-table [dataSource]="dataSource$" class="mat-elevation-z8 demo-table">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element;let i = index;">{{i+1}}</td>
+  </ng-container>
+
+  <!-- First Name Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef>First Name</th>
+    <td mat-cell *matCellDef="let element">{{element?.firstName}}</td>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef>Last Name</th>
+    <td mat-cell *matCellDef="let element">{{element?.lastName}}</td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{element?.email}}</td>
+  </ng-container>
+
+  <!-- Phone Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Phone</th>
+    <td mat-cell *matCellDef="let element">{{element?.phone}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+    *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
