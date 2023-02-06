@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './users/user-listing/user-listing.reducer';
+import { metaReducers, userReducer } from './users/user-listing/user-listing.reducer';
 import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { localStorageSync } from 'ngrx-store-localstorage';
@@ -24,7 +24,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    StoreModule.forRoot({ users: userReducer }),
+    StoreModule.forRoot({ users: userReducer },
+      { metaReducers: metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({})
   ],
