@@ -2,7 +2,7 @@
   <mat-tab label="User_Detail">
     <app-user-detail>
       <h2 tabTitle>User Info</h2>
-      <mat-list role="list" tabContent>
+      <mat-list role="list" tabContent *ngIf="userDetail$ | async; let userDetail">
         <mat-list-item role="listitem"> First Name : {{userDetail?.firstName}}</mat-list-item>
         <mat-list-item role="listitem">Last Name : {{userDetail?.lastName}}</mat-list-item>
         <mat-list-item role="listitem">Email : {{userDetail?.email}}</mat-list-item>

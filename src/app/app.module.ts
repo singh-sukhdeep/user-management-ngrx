@@ -11,7 +11,6 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, userReducer } from './users/user-listing/user-listing.reducer';
 import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import { localStorageSync } from 'ngrx-store-localstorage';
 
 @NgModule({
   declarations: [
@@ -28,6 +27,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
       { metaReducers: metaReducers }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({}),
+
 
   ],
   providers: [],

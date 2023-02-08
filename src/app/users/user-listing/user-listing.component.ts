@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { combineAll, combineLatest, debounceTime, distinctUntilChanged, filter, forkJoin, map, merge, mergeAll, Observable, startWith, Subscription, tap } from 'rxjs';
+import { combineLatest, debounceTime, distinctUntilChanged, map, Observable, startWith, Subscription, } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { User } from '../user.model';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -29,7 +29,7 @@ export class UserListingComponent implements OnInit {
     ).pipe(
       map(([users, searchVal]) => {
         if (searchVal && searchVal) {
-          return users.filter(item => item.email.startsWith(searchVal))
+          return users.filter(item => item.email.search(searchVal)!==-1)
         } else {
           return users;
         }

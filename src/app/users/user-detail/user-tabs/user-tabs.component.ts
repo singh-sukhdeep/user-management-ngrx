@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {  Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { User } from '../../user.model';
 
@@ -12,9 +12,9 @@ import { User } from '../../user.model';
 })
 export class UserTabsComponent implements OnInit, OnDestroy {
 
-  userDetail: User | undefined | null;
-  userDetailSubscription: Subscription | undefined;
+  userDetail$!: Observable<User | undefined>;
   paramsSubscription: Subscription | undefined;
+  getUserWithEmailSelector = (emailToFind: string) => (state: AppState) => state.users.find(user => user.email===emailToFind);
 
   constructor(private activateRoute: ActivatedRoute, private store: Store<AppState>) { }
 
@@ -27,17 +27,10 @@ export class UserTabsComponent implements OnInit, OnDestroy {
 
 
   selectData(emailToFind: string) {
-    this.userDetailSubscription = this.store.select('users').subscribe((users) => {
-      if (users) {
-        this.userDetail = users.find(item => item.email === emailToFind);
-      } else {
-        this.userDetail = null;
-      }
-    });
+    this.userDetail$=this.store.select(this.getUserWithEmailSelector(emailToFind));
   }
 
   ngOnDestroy(): void {
-    this.userDetailSubscription?.unsubscribe();
     this.paramsSubscription?.unsubscribe();
   }
 
